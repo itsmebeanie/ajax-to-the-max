@@ -1,6 +1,9 @@
 # Ajax to the Max
 Workshop for the Gender in Music Hackathon led by [Hannah Park](https://www.linkedin.com/in/hannah-park-b30ba888) and [Kaitlin Gu](http://kaitlingu.com/). Forked from Blake Tarter's [Giphy API Search](http://codepen.io/blaketarter/full/wBgWbV) project on Codepen.:sparkles: :sparkles: :sparkles:
 
+### Contacts
+Kaitlin Gu: kaitlin.gu@gmail.com<br />
+Hannah Park: hannahmimipark@gmail.com<br />
 ### Agenda
 [HTML // CSS basics](#html-and-css)<br />
 [How to build and style your own static page!](#building-a-static-website) <br />
