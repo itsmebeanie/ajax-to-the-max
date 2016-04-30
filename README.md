@@ -112,3 +112,4 @@ Also other events such as click, hover, keyup, and keydown
 Create a site with a button that will enlarge the text upon click.<br />
 Example Interaction:
 ![Example Interaction](img/example.gif)
+[Example Solution](https://github.com/kaitlingu/ajax-to-the-max/tree/master/example-answer)
