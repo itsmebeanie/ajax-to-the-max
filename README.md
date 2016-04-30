@@ -3,7 +3,7 @@ Workshop for the Gender in Music Hackathon led by [Hannah Park](https://www.link
 
 ### Agenda
 [HTML // CSS basics](#html-and-css)<br />
-How to build and style your own static page! <br />
+[How to build and style your own static page!](#static-website) <br />
 jQuery basics<br />
 How to call an API using the [GIPHY API](https://api.giphy.com/)<br />
 How to parse and use an API response <br />
@@ -29,8 +29,23 @@ HTML is the basic building block of a web page. Each html site follows the basic
 
 ######CSS
 You can use CSS to style your web page. CSS describes how HTML should be laid out on the web page. <br /><br />
-The following code describes styling a h1 tag:
+The following code describes styling a h1 tag, this is an example of a tag selector:
 ```
-/* Selector {Property: Value;}*/
+/* Selector {Property: Value;} */
 h1 {color: blue;}
 ```
+You can also style based on class and id selectors:
+```
+#myparagraph {
+  font-family: "Helevtica";
+  font-size: 13px;
+}
+
+.title {
+  font-family: "Times";
+  font-size: 18px;
+  color: blue;
+}
+```
+
+######Building a Static Website
