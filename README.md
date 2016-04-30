@@ -4,7 +4,7 @@ Workshop for the Gender in Music Hackathon led by [Hannah Park](https://www.link
 ### Agenda
 [HTML // CSS basics](#html-and-css)<br />
 [How to build and style your own static page!](#building-a-static-website) <br />
-jQuery basics<br />
+[jQuery basics](#jquery-basics)<br />
 How to call an API using the [GIPHY API](https://api.giphy.com/)<br />
 How to parse and use an API response <br />
 
@@ -52,19 +52,31 @@ You can also style based on class and id selectors:
 Let's put HTML and CSS together to generate a static website.
 First, let's have a file named ```index.html``` and a stylesheet titled ```style.css```
 
-index.html
+######index.html
 ```
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>My Webpage</title>
   </head>
   <body>
     <h1>Welcome</h1>
-    <p>This is the content of my web page</p>
+    <p id = "changeme">This is the content of my web page</p>
+    <p>This is another paragraph</p>
   </body>
 </html>
 ```
 
-style.css
+######style.css
 ```
+h1{
+  color: red;
+  font-family: "Helvetica", sans-serif;
+}
+
+p{
+  font-size: 10px;
+}
 ```
+
+####jQuery Basics
