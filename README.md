@@ -13,3 +13,19 @@ How to parse and use an API response <br />
 
 <hr />
 ####HTML and CSS
+
+######HTML
+HTML is the basic building block of a web page. Each html site follows the basic structure.
+```
+<html>
+  <head>
+    <title>My First Web page</title>
+  </head>
+  <body>
+    The content of my first web page
+  </body>
+</html>
+```
+
+######CSS
+You can use CSS to style your web page
