@@ -4,8 +4,10 @@ var PUBLIC_KEY = 'dc6zaTOxFJmzC';
 var BASE_URL = 'http://api.giphy.com/v1/gifs/';
 var ENDPOINT = 'search';
 var PARAMETERS = {
-  'LIMIT' : 1,
-  'RATING' : 'pg'
+  'limit' : 1,
+  'ratin' : 'pg',
+  'offset' : 1,
+  'api_key' : PUBLIC_KEY
 }
 
 var $searchbutton = $('.search');
@@ -18,13 +20,12 @@ var currentTimeout = undefined;
 
 var query = {
   text: null,
-  offset: 0,
   request: function request() {
     var parameters = ''
     for (var key in PARAMETERS) {
       parameters += '&' + key + '=' + PARAMETERS[key];
     }
-    return '' + BASE_URL + ENDPOINT + '?q=' + this.text + parameters + '&offset=' + this.offset + '&api_key=' + PUBLIC_KEY;
+    return '' + BASE_URL + ENDPOINT + '?q=' + this.text + parameters;
   },
 };
 
@@ -58,8 +59,7 @@ $clear.on('click', function (e) {
 });
 
 $button.on('click', function (e) {
-  query.offset = Math.floor(Math.random() * 25);
-
+  PARAMETERS['offset'] = Math.floor(Math.random() * 25);
   ajaxCall(query, function(url) {
     showGif(url);
   });
@@ -67,7 +67,7 @@ $button.on('click', function (e) {
 
 var searchForGif = function (url) {
   query.text = $queryInput.val();
-  query.offset = Math.floor(Math.random() * 25);
+  PARAMETERS['offset'] = Math.floor(Math.random() * 25);
   $searchbutton.addClass('active');
   if (query.text) {
     ajaxCall(query, function(url) {
@@ -90,6 +90,7 @@ var showGif = function(url) {
   }
 }
 
+$searchbutton.on('click', searchForGif());
 window.onkeypress = function (e) {
   if (e.keyCode == 13) {
     searchForGif();
@@ -99,5 +100,3 @@ window.onkeypress = function (e) {
 var whatKeyAmI = function (e) {
   console.log(e.keyCode);
 }
-
-$searchbutton.on('click', searchForGif());
