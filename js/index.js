@@ -111,7 +111,7 @@ function searchForGif(url) {
  * showGif - if giphy finds a matching gif, build the html to insert onto the page
  * @param {string} url
  */
-showGif = function(url) {
+function showGif(url) {
   //check if you got a url result back!
   if (url.length) {
     $resultWrapper.html(buildImg(url));
@@ -134,7 +134,7 @@ showGif = function(url) {
  * determine the keycodes for each key pressed (in event 'e')
  * @param {string} url
  */
-var whatKeyAmI = function (e) {
+function whatKeyAmI(e) {
   console.log(e.keyCode);
 }
 
