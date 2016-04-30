@@ -49,3 +49,6 @@ You can also style based on class and id selectors:
 ```
 
 ####Building a Static Website
+Let's put HTML and CSS together to generate a static website.
+First, let's have a file named ```index.html``` and a stylesheet titles ```style.css```
+```
