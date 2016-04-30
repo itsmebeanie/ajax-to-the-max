@@ -28,4 +28,9 @@ HTML is the basic building block of a web page. Each html site follows the basic
 ```
 
 ######CSS
-You can use CSS to style your web page
+You can use CSS to style your web page. CSS describes how HTML should be laid out on the web page. <br /><br />
+The following code describes styling a h1 tag:
+```
+/* Selector {Property: Value;}*/
+h1 {color: blue;}
+```
