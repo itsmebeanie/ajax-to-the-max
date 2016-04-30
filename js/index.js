@@ -29,13 +29,10 @@ var query = {
 };
 
 var ajaxCall = function fetch(query, callback) {
-  console.log(query, callback);
-  console.log('hello');
   $.getJSON(query.request()).success(function (data) {
     var results = data.data;
     if (results.length) {
       var url = results[0].images.downsized.url;
-      console.log(url);
       callback(url);
     } else {
       callback('');
@@ -49,7 +46,6 @@ var ajaxCall = function fetch(query, callback) {
 function buildImg() {
   var src = arguments.length <= 0 || arguments[0] === undefined ? '//giphy.com/embed/xv3WUrBxWkUPC' : arguments[0];
   var classes = arguments.length <= 1 || arguments[1] === undefined ? 'gif hidden' : arguments[1];
-
   return '<img src="' + src + '" class="' + classes + '" alt="gif" />';
 }
 
@@ -65,18 +61,7 @@ $button.on('click', function (e) {
   query.offset = Math.floor(Math.random() * 25);
 
   ajaxCall(query, function(url) {
-    if (url.length) {
-      $resultWrapper.html(buildImg(url));
-
-      $button.addClass('active');
-    } else {
-      $resultWrapper.html('<p class="no-results hidden">No Results found for <strong>' + query.text + '</strong></p>');
-
-      $button.removeClass('active');
-    }
-    currentTimeout = setTimeout(function () {
-      $('.hidden').toggleClass('hidden');
-    }, 1000);
+    showGif(url);
   });
 });
 
@@ -84,52 +69,27 @@ var searchForGif = function (url) {
   query.text = $queryInput.val();
   query.offset = Math.floor(Math.random() * 25);
   $searchbutton.addClass('active');
-  if (currentTimeout) {
-    clearTimeout(currentTimeout);
+  if (query.text) {
+    ajaxCall(query, function(url) {
+      showGif(url);
+    });
   }
-  ajaxCall(query, function(url) {
-    console.log('u', url);
-    if (url.length) {
-      $resultWrapper.html(buildImg(url));
-      $button.addClass('active');
-    } else {
-      $resultWrapper.html('<p class="no-results hidden">No Results found for <strong>' + query.text + '</strong></p>');
-
-      $button.removeClass('active');
-    }
-    currentTimeout = setTimeout(function () {
-      $('.hidden').toggleClass('hidden');
-    }, 1000);
-  });
-
-  $('img').removeClass('imgexpand');
-  $('img').addClass('imgshrunk');
-  currentTimeout = setTimeout(function () {
-    currentTimeout = null;
-    $('.gif').addClass('hidden');
-
-    if (query.text && query.text.length) {
-      $inputWrapper.addClass('active').removeClass('empty');
-      ajaxCall(query, function(url) {
-        if (url.length) {
-          $resultWrapper.html(buildImg(url));
-
-          $button.addClass('active');
-        } else {
-          $resultWrapper.html('<p class="no-results hidden">No Results found for <strong>' + query.text + '</strong></p>');
-
-          $button.removeClass('active');
-        }
-        currentTimeout = setTimeout(function () {
-          $('.hidden').toggleClass('hidden');
-        }, 1000);
-      });
-    } else {
-      $inputWrapper.removeClass('active').addClass('empty');
-      $button.removeClass('active');
-    }
-  }, 1000);
 };
+
+var showGif = function(url) {
+  if (url.length) {
+    $resultWrapper.html(buildImg(url));
+    $('.hidden').toggleClass('hidden');
+    $button.addClass('active');
+    $('img').removeClass('imgexpand');
+    $('img').addClass('imgshrunk');
+  } else {
+    $resultWrapper.html('<p class="no-results hidden">Sorry! No Results found for <strong>' + query.text + '</strong></p>');
+    $('.hidden').toggleClass('hidden');
+    $button.removeClass('active');
+  }
+}
+
 window.onkeypress = function (e) {
   if (e.keyCode == 13) {
     searchForGif();
