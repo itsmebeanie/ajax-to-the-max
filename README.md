@@ -3,7 +3,7 @@ Workshop for the Gender in Music Hackathon led by [Hannah Park](https://www.link
 
 ### Agenda
 [HTML // CSS basics](#html-and-css)<br />
-[How to build and style your own static page!](#static-website) <br />
+[How to build and style your own static page!](#building-a-static-website) <br />
 jQuery basics<br />
 How to call an API using the [GIPHY API](https://api.giphy.com/)<br />
 How to parse and use an API response <br />
@@ -48,4 +48,4 @@ You can also style based on class and id selectors:
 }
 ```
 
-######Building a Static Website
+####Building a Static Website
