@@ -27,23 +27,13 @@ var PARAMETERS = {
   'api_key' : PUBLIC_KEY
 }
 
-// jQuery Selectors! These may be different depending on
-// how you named your HTML elements
-var $searchbutton = $('.search');
-var $queryInput = $('.query');
-var $resultWrapper = $('.result');
-var $inputWrapper = $('.input-wrapper');
-var $clear = $('.clear');
-var $button = $('.random');
-var currentTimeout = undefined;
-
 // this object variable is a bit more complex than the traditional VARIABLE_NAME = VALUE
 // here, "query" has "properties" of text and request
 var query = {
   // the text property can be accessed as query.text and can be assigned a value as query.text = VALUE
   text: null,
   // the request property is a function specific to the query variable
-  request: function request() {
+  buildRequestURL: function buildRequestURL() {
     var parameters = '';
     // build the parameter string by iterating through each key value pair
     for (var key in PARAMETERS) {
@@ -62,7 +52,7 @@ var query = {
  * @return {string} url
  */
  var ajaxCall = function fetch(query, callback) {
-  $.getJSON(query.request()).success(function (data) {
+  $.getJSON(query.buildRequestURL()).success(function (data) {
     var results = data.data;
     if (results.length) {
       var url = results[0].images.downsized.url;
@@ -93,11 +83,11 @@ var query = {
  */
 function searchForGif(url) {
   // grab the text using a jQuery selector, and assign the value to the query.text property
-  query.text = $queryInput.val();
+  query.text = $('.query').val();
 
   // for the offset, grab a random number between 1 and 25
   PARAMETERS['offset'] = Math.floor(Math.random() * 25);
-  $searchbutton.addClass('active');
+  $('.search').addClass('active');
 
   // if an actual query has been entered, make the ajax call to GIPHY API!
   if (query.text) {
@@ -114,18 +104,18 @@ function searchForGif(url) {
 function showGif(url) {
   //check if you got a url result back!
   if (url.length) {
-    $resultWrapper.html(buildImg(url));
+    $('.result').html(buildImg(url));
 
     //some css magic to show off your gif
     $('.hidden').toggleClass('hidden');
-    $button.addClass('active');
+    $('.random').addClass('active');
     $('img').removeClass('imgexpand');
     $('img').addClass('imgshrunk');
   } else {
     // no results :( - gotta break the bad news
-    $resultWrapper.html('<p class="no-results hidden">Sorry! No Results found for <strong>' + query.text + '</strong></p>');
+    $('.result').html('<p class="no-results hidden">Sorry! No Results found for <strong>' + query.text + '</strong></p>');
     $('.hidden').toggleClass('hidden');
-    $button.removeClass('active');
+    $('.random').removeClass('active');
   }
 }
 
@@ -139,21 +129,21 @@ function whatKeyAmI(e) {
 }
 
 // event listener functions
-$clear.on('click', function (e) {
-  $queryInput.val('');
-  $inputWrapper.removeClass('active').addClass('empty');
+$('.clear').on('click', function (e) {
+  $('.query').val('');
+  $('.input-wrapper').removeClass('active').addClass('empty');
   $('.gif').addClass('hidden');
-  $button.removeClass('active');
+  $('.random').removeClass('active');
 });
 
-$button.on('click', function (e) {
+$('.random').on('click', function (e) {
   PARAMETERS['offset'] = Math.floor(Math.random() * 25);
   ajaxCall(query, function(url) {
     showGif(url);
   });
 });
 
-$searchbutton.on('click', searchForGif());
+$('.search').on('click', searchForGif());
 window.onkeypress = function (e) {
   if (e.keyCode == 13) {
     searchForGif();
