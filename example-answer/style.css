@@ -1,0 +1,28 @@
+body{
+  padding-top: 50px;
+  font-family: "Avenir", "Helvetica", sans-serif;
+  text-align: center;
+}
+button {
+  width: 90%;
+  max-width: 400px;
+  margin: 50px auto;
+  height: 50px;
+  display: block;
+  background: #e75552;
+  color: white;
+  border: none;
+  opacity: 1;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+button:hover {
+  background: #fd926c;
+}
+.search.active {
+  display: none;
+}
+
+.bigger{
+  font-size:80px;
+}
