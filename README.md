@@ -80,3 +80,30 @@ p{
 ```
 
 ####jQuery Basics
+jQuery is built on top of JavaScript and allows you to elements of an HTML page.
+We'll be going over event listeners and selectors.
+
+######Selectors
+You use the $ to select ids, classes, and tags by name:
+```
+$('tag')
+$('#id')
+$('.class')
+```
+Once they are selected, you have a variety of methods that you can call:
+```
+.addClass('className');
+.removeClass('className');
+.toggleClass('className');
+```
+######Event Listeners
+
+```
+$( "button" ).on( "click", function() {
+    console.log( "click" );
+});
+```
+Also other events such as click, hover, keyup, and keydown
+
+#####  Exercise:
+Create a site with a button that will enlarge the text upon click.
