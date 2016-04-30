@@ -1,0 +1,170 @@
+/* https://www.google.com/fonts: Useful source to find fonts */
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Merriweather);
+
+/* background color */
+html {
+  box-sizing: border-box;
+  outline: none;
+  background: #f7cb73; /* For browsers that do not support gradients */
+  background: linear-gradient(to right, #f6bc49, #fff373); /*Standard*/
+  color: #e75552
+}
+html *, html *:before, html *:after {
+  box-sizing: inherit;
+}
+html *:focus, html *:before:focus, html *:after:focus {
+  outline: inherit;
+}
+/* setting fonts for headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+.title {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  margin: 50px auto 0;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.input-wrapper .query {
+  height: 50px;
+  width: 100%;
+  display: block;
+  padding: 0 25px;
+  border: 2px solid #ccc;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.input-wrapper .query:focus {
+  outline: none;
+  border: 2px solid #e75552;
+  -webkit-transition: 400ms ease;
+  transition: 400ms ease;
+}
+.input-wrapper .clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  width: 30px;
+  opacity: 1;
+}
+.input-wrapper .clear:before {
+  content: '\00d7';
+  color: #2196F3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  line-height: 50px;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.input-wrapper .clear:hover:before {
+  cursor: pointer;
+}
+.input-wrapper.active {
+  margin-top: -55px;
+}
+.input-wrapper.active .query {
+  height: 30px;
+  margin-top: 0px;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.input-wrapper.active .clear {
+  height: 30px;
+}
+.input-wrapper.active .clear:before {
+  line-height: 30px;
+}
+.input-wrapper.empty .clear {
+  opacity: 0;
+}
+
+.result {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 5% 25px 0;
+  /* background: #eee; */
+}
+.result img, .result p.no-results {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  opacity: 1;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.result img.hidden, .result p.no-results.hidden {
+  opacity: 0;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.result p.no-result {
+  font-weight: 200;
+}
+.result p.no-result.center {
+  text-align: center;
+}
+/* how to expand image */
+.imgexpand{
+  width: 200px;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  padding: 10px;
+}
+.imgshrunk{
+  width:0;
+  -webkit-transition: 500ms ease;
+  transition: 500ms ease;
+}
+.random {
+  width: 90%;
+  max-width: 400px;
+  margin: 50px auto;
+  height: 50px;
+  display: block;
+  background: #e75552;
+  color: white;
+  border: none;
+  opacity: 0;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.random:hover {
+  background: #fd926c;
+}
+.random.active {
+  opacity: 1;
+}
+
+
+.search {
+  width: 90%;
+  max-width: 400px;
+  margin: 50px auto;
+  height: 50px;
+  display: block;
+  background: #e75552;
+  color: white;
+  border: none;
+  opacity: 1;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+.search:hover {
+  background: #fd926c;
+}
+.search.active {
+  display: none;
+}
